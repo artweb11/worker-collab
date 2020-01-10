@@ -1,4 +1,8 @@
 [build]
     base = "ui/"
-    publish = "ui/build/"
+    publish = "build/"
     command = "yarn build"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
