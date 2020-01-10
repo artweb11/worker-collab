@@ -9,7 +9,7 @@
     "express": "^4.17.1"
   },
   "scripts": {
-   "build-ui": "cd ui && yarn build"
+   "build-ui": "cd ui && yarn install && yarn build"
   },
   "engines": {
     "node": "10.x"
