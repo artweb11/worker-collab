@@ -1,0 +1,17 @@
+{
+  "name": "02_worker-collab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/artweb11/worker-collab.git",
+  "author": "Sebastian Bratu <artweb11@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "build": "cd api && npm install && node index.js"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
