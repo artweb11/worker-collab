@@ -2,6 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import io from 'socket.io-client';
+ 
+const socket = io('https://woker-collab-chat.herokuapp.com/');
+
+socket.on('connect', function(){
+  console.log('CLIENT CONNECTED.');
+});
+
 function App() {
   return (
     <div className="App">
