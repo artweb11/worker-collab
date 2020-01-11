@@ -1,20 +1,20 @@
-var app = require('express')();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+'use strict';
 
-app.get('/', function(req, res){
-  res.end('Hello world');
+const express = require('express');
+const socketIO = require('socket.io');
+
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-});
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
-
-http.listen( port, function(){
-  console.log('listening on *:3000');
-});
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
